@@ -12,7 +12,7 @@ From a Market Research perspective I want...
 ------
 1. I want a to know which items the general public is likely to purchase.
 2. I want to market a clean, user friendly array of items that make the consumer want to participate in my research.
-3. I want to limit the size of my scope to twenty times so I have a managable size data set.
+3. I want to limit the size of my scope to twenty five times so I have a managable size data set.
 4. I want 
 
 

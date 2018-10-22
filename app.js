@@ -1,5 +1,18 @@
 'use strict';
 
+//array to store the objects
+
+var allImages = [];
+
+//make a constructor function
+function Products(name, filepath) {
+    this.name = name;
+    this.filepath = filepath;
+    this.view = 0 //starts count of views at zero
+    allProduct.push(this);
+}
+
+
 // Array to store the objects
 //var allGoats = [];
 
