@@ -3,13 +3,14 @@
 //array to store the objects
 
 var allImages = [];
+var allProducts = []
 
 //make a constructor function
-function Products(name, filepath) {
-    this.name = name;
-    this.filepath = filepath;
-    this.view = 0 //starts count of views at zero
-    allProduct.push(this);
+function Product(name, filepath) {
+  this.name = name;
+  this.filepath = filepath;
+  this.view = 0; //starts count of views at zero
+  allProducts.push(this);
 }
 
 //make new product instances
@@ -33,6 +34,46 @@ new Product('unicorn', 'img/unicorn.jpg');
 new Product('usb', 'img/usb.gif');
 new Product('water-can', 'img/water-can.jpg');
 new Product('wine-glass', 'img/wine-glass.jpg');
+
+// Get the <img> element from the DOM
+var productImg = document.getElementById('product-pic');
+
+function randomProduct() {
+
+  // We need to access the <img> element in the DOM
+  // Select a random goat from the array of goats
+  var idx = Math.floor(Math.random() * allProducts.length);
+  console.log(allProducts[idx]);
+
+  // Assign the src, alt, and title attributes to the <img> element
+  productImg.src = allProducts[idx].filepath;
+  productImg.alt = allProducts[idx].name;
+  productImg.title = allProducts[idx].name;
+
+  // Console log which product is showing
+  console.log(`${allProducts[idx].name} is showing`);
+
+  //tally  views for each goat
+  allProducts[idx].views++;
+
+}
+
+randomProduct();
+
+// Listen for clicks on the goat and then display a new goat
+
+productImg.addEventListener('click', randomProduct);
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Array to store the objects
@@ -68,7 +109,7 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 //   // Select a random goat from the array of goats
 //   var idx = Math.floor(Math.random() * allGoats.length);
 //   console.log(allGoats[idx]);
-  
+
 //   // Assign the src, alt, and title attributes to the <img> element
 //   goatImg.src = allGoats[idx].filepath;
 //   goatImg.alt = allGoats[idx].name;
