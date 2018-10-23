@@ -47,9 +47,11 @@ function randomProduct() {
   var idx = Math.floor(Math.random() * allProducts.length);
   console.log(allProducts[idx]);
 
-  var jdx = Math.floor(Math.random() * allProducts.length);
+  //****get jdx image not same as idx and third iteration not same as i or j */
+  do {var jdx = Math.floor(Math.random() * allProducts.length); 
   console.log(allProducts[jdx]);
-
+  }
+  
   var kdx = Math.floor(Math.random() * allProducts.length);
   console.log(allProducts[kdx]);
   //Assign the src, alt, and title attributes to the <img> element
@@ -78,6 +80,7 @@ function randomProduct() {
 }
 
 randomProduct();
+
 
 // Listen for clicks on the goat and then display a new goat
 
