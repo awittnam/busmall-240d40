@@ -47,27 +47,30 @@ function makeRandom() {
 
 
 function makeThreeUnique() {
-  console.log(justViewed, 'just viewed in line 50');
+  //console.log(justViewed, 'just viewed in line 50');
   var output = [];
 
   var firstNum = makeRandom(); //make first     //**need to do this for 2 & 3 */
   while (justViewed.includes(firstNum)) {
-     firstNum = makeRandom(); //make first again
+    firstNum = makeRandom(); //make first again
   }
   output.push(firstNum);
 
-  output.push(makeRandom()); //make second
-  while (output[0] === output[1]){
+  
+  var secondNum = makeRandom();
+  while (output[0] === secondNum || justViewed.includes(secondNum)) {
     console.log('duplicate detected');
-    output[1] = makeRandom();
+    secondNum = makeRandom();
   }
+  output.push(secondNum);
 
-  output.push(makeRandom()); //make third
-  while (output[0] === output[2] || output[1] === output[2]){
+  var thirdNum = makeRandom();
+  while (output[0] === thirdNum || output[1] === thirdNum || justViewed.includes(thirdNum)) {
     console.log('duplicate detected on third');
-    output[2] = makeRandom();
+    thirdNum = makeRandom();
   }
-  justViewed = output;  //puts images viewed into array to start checking for duplicates
+  output.push(thirdNum);
+  justViewed = output; //puts images viewed into array to start checking for duplicates
   return output;
 }
 
@@ -97,7 +100,7 @@ function handleClick(event) {
   //console.log(totalClicks, 'total clicks');
 
 
-}
+
 
   for(var i = 0; i < allProducts.length; i++) {
     if (event.target.alt === allProducts[i].name) {
@@ -105,19 +108,19 @@ function handleClick(event) {
     }
   }
 
-  if (totalClicks === 25 {
-      container.removeEventListener('click', handleClick);  //to remove listener since 25 clicks have been recorded
-      return showList();
+  if (totalClicks === 25) {
+    container.removeEventListener('click', handleClick); //to remove listener since 25 clicks have been recorded
+    return showList();
   }
   displayPics();
 }
 
 function showList() {
-    for (var i = 0; i < allProducts.length; i++) {
-        var LiEl = cocument.creatElement('li');
-        LiEl.textContent = `${allProducts[i].name} has ${allProducts[i].views} views and ${allProducts[i].votes} votes`;
-        productList.appendChild(liEl);
-    }
+  for (var i = 0; i < allProducts.length; i++) {
+    var liEl = document.createElement('li');
+    liEl.textContent = `${allProducts[i].name} has ${allProducts[i].views} views and ${allProducts[i].votes} votes`;
+    productList.appendChild(liEl);
+  }
 }
 
 //++++++++++++++++++++++++++++++
