@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
     background: blue
 }
 
@@ -6,4 +6,25 @@ img {
     height: 200px;
     width: 200px;
     align-self: auto;
-}
+} */
+
+* {
+    font-family: 'Helvetica';
+  }
+  
+  img {
+    border: 6px solid #214;
+    border-radius: 20px;
+    max-height: 200px;
+    max-width: 25%;
+    margin: 1.5%;
+    vertical-align: middle;
+  }
+  
+  li {
+    list-style: none;
+    padding: 5px;
+    border-radius: 25px;
+    margin: 5px;
+    width: 75%;
+  }
