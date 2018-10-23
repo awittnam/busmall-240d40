@@ -36,25 +36,44 @@ new Product('water-can', 'img/water-can.jpg');
 new Product('wine-glass', 'img/wine-glass.jpg');
 
 // Get the <img> element from the DOM
-var productImg = document.getElementById('product-pic');
+var productImgI = document.getElementById('product-pic-i');
+var productImgJ = document.getElementById('product-pic-j');
+var productImgK = document.getElementById('product-pic-k');
 
 function randomProduct() {
 
   // We need to access the <img> element in the DOM
-  // Select a random goat from the array of goats
+  // Select a random product from the array of products (1st/2nd/3rd items)
   var idx = Math.floor(Math.random() * allProducts.length);
   console.log(allProducts[idx]);
 
-  // Assign the src, alt, and title attributes to the <img> element
-  productImg.src = allProducts[idx].filepath;
-  productImg.alt = allProducts[idx].name;
-  productImg.title = allProducts[idx].name;
+  var jdx = Math.floor(Math.random() * allProducts.length);
+  console.log(allProducts[jdx]);
 
-  // Console log which product is showing
+  var kdx = Math.floor(Math.random() * allProducts.length);
+  console.log(allProducts[kdx]);
+  //Assign the src, alt, and title attributes to the <img> element
+  productImgI.src = allProducts[idx].filepath;
+  productImgI.alt = allProducts[idx].name;
+  productImgI.title = allProducts[idx].name;
+
+  productImgJ.src = allProducts[jdx].filepath;
+  productImgJ.alt = allProducts[jdx].name;
+  productImgJ.title = allProducts[jdx].name;
+
+  productImgK.src = allProducts[kdx].filepath;
+  productImgK.alt = allProducts[kdx].name;
+  productImgK.title = allProducts[kdx].name;
+
+  //Console log which product is showing
   console.log(`${allProducts[idx].name} is showing`);
+  console.log(`${allProducts[jdx].name} is showing`);
+  console.log(`${allProducts[kdx].name} is showing`);
 
-  //tally  views for each goat
+  //tally  views for each item (or it's supposed too Lol)
   allProducts[idx].views++;
+  allProducts[jdx].views++;
+  allProducts[kdx].views++;
 
 }
 
@@ -62,7 +81,9 @@ randomProduct();
 
 // Listen for clicks on the goat and then display a new goat
 
-productImg.addEventListener('click', randomProduct);
+productImgI.addEventListener('click', randomProduct);
+productImgJ.addEventListener('click', randomProduct);
+productImgK.addEventListener('click', randomProduct);
 
 
 
