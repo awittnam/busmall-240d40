@@ -18,3 +18,7 @@
     margin: 5px;
     width: 75%;
   }
+
+  canvas {
+      border: 5px black;
+  }

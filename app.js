@@ -8,6 +8,8 @@ var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'ch
 
 var allProducts = []; // This is the main array of objects
 var totalClicks = 0; // Tallies the 25 clicks
+var voteTally = [];
+
 
 // DOM access
 var container = document.getElementById('image_container');
@@ -56,7 +58,7 @@ function makeThreeUnique() {
   }
   output.push(firstNum);
 
-  
+
   var secondNum = makeRandom();
   while (output[0] === secondNum || justViewed.includes(secondNum)) {
     console.log('duplicate detected');
@@ -92,15 +94,13 @@ function displayPics() {
 }
 
 function handleClick(event) {
-  console.log(event.target.alt, 'was clicked');
+  //console.log(event.target.alt, 'was clicked');
   if (event.target.id === 'image_container') {
     return alert('Please click directly on an image')
   }
   totalClicks++;
+
   //console.log(totalClicks, 'total clicks');
-
-
-
 
   for(var i = 0; i < allProducts.length; i++) {
     if (event.target.alt === allProducts[i].name) {
@@ -110,6 +110,7 @@ function handleClick(event) {
 
   if (totalClicks === 25) {
     container.removeEventListener('click', handleClick); //to remove listener since 25 clicks have been recorded
+    renderChart();
     return showList();
   }
   displayPics();
@@ -122,6 +123,30 @@ function showList() {
     productList.appendChild(liEl);
   }
 }
+
+function getVotes() {
+  for (var i = 0; i < allProducts.length; i++) {
+    voteTally.push(allProducts[i].votes);
+  }
+}
+
+//chart
+var ctx = document.getElementById('myChart').getContext('2d');
+function renderChart() {
+  getVotes();
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: names,
+      datasets: [{
+        label: 'Votes per Product',
+        data: voteTally,
+      }]
+    },
+    options: {}
+  })
+}
+
 
 //++++++++++++++++++++++++++++++
 // CODE THAT EXECUTES ON PAGE LOAD
