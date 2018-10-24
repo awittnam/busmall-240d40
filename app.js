@@ -4,6 +4,17 @@
 // SETTING UP GLOBAL DATA
 //++++++++++++++++++++++++++++++
 
+// if (LS existe){
+//     retrieve/parse 
+//     -assign to allProducts
+//   } else {
+//     create instances
+//   }
+
+ 
+  //this should happen at the very beginning
+
+
 var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 var allProducts = []; // This is the main array of objects
@@ -111,9 +122,15 @@ function handleClick(event) {
   if (totalClicks === 25) {
     container.removeEventListener('click', handleClick); //to remove listener since 25 clicks have been recorded
     renderChart();
-    return showList();
+    saveProductStats();
+    return;
   }
   displayPics();
+}
+
+function saveProductStats() {
+    var jsonStr = JSON.stringify(allProducts);
+    localStorage.setItem('allProducts', jsonStr);
 }
 
 function showList() {
@@ -146,7 +163,7 @@ function renderChart() {
     options: {}
   })
 }
-
+ 
 
 //++++++++++++++++++++++++++++++
 // CODE THAT EXECUTES ON PAGE LOAD
